@@ -54,6 +54,7 @@ export default function VerticalTree({ data }) {
               level={0}
               isLast={index === tree.length - 1}
               setTree={setTree}
+              dragOverId={dragOverId}
             />
           ))}
         </div>

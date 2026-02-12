@@ -49,7 +49,7 @@ const addChild = (tree, parentId) =>
         return node;
     });
 
-export default function TreeNode({ node, level, isLast, setTree }) {
+export default function TreeNode({ node, level, isLast, setTree, dragOverId }) {
     const { setNodeRef, attributes, listeners, transform, transition } = useSortable({ id: node.id });
 
     const style = {
@@ -77,7 +77,7 @@ export default function TreeNode({ node, level, isLast, setTree }) {
                 )}
 
                 {/* card */}
-                <div className="ml-10 inline-flex items-center gap-2 bg-white rounded-xl shadow-md px-2 py-1">
+                <div className={`ml-10 inline-flex items-center gap-2 bg-white rounded-xl shadow-md px-2 py-1  ${dragOverId === node.id ? "ring-2 ring-blue-400 bg-blue-50" : ""}`}>
 
                     {/* drag handle ONLY */}
                     <div
@@ -110,17 +110,17 @@ export default function TreeNode({ node, level, isLast, setTree }) {
                     )}
 
                     {/* View Notes */}
-                    <Notes node={node} setTree={setTree}/>
+                    <Notes node={node} setTree={setTree} />
 
                     {/* Delete Node */}
-                    <DeleteNode setTree={setTree} node={node}/>
+                    <DeleteNode setTree={setTree} node={node} />
 
                     {/* add */}
                     <button
                         onClick={() => setTree((t) => addChild(t, node.id))}
                         className="rounded border text-gray-500 hover:bg-gray-100"
                     >
-                        <AddIcon  color="success" sx={{ fontSize: 20 }}/>
+                        <AddIcon color="success" sx={{ fontSize: 20 }} />
                     </button>
                 </div>
             </div>
