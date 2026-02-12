@@ -18,7 +18,6 @@ const flattenTreeIds = (nodes) => {
 export default function VerticalTree({ data }) {
   const [tree, setTree] = useState(data);
   const [dragOverId, setDragOverId] = useState(null);
-  // eslint-disable
 
   return (
     <DndContext
